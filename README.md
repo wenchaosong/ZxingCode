@@ -4,7 +4,7 @@
 
 ```
 dependencies{
-    implementation 'com.ms:ZxingCode:1.0.0'
+    implementation 'com.ms:zxingcode:1.0.0'
 }
 ```
 
