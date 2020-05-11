@@ -23,7 +23,7 @@ publish {
     userOrg = 'songwenchao0714'
     groupId = 'com.ms'
     artifactId = 'zxingcode'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'A simple code lib'
     website = 'https://github.com/wenchaosong/ZxingCode'
 }

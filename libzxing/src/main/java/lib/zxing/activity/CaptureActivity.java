@@ -358,10 +358,12 @@ public class CaptureActivity extends Activity {
             Bundle bundle = new Bundle();
             bundle.putParcelable("barcode_bitmap", source.renderCroppedGreyscaleBitmap());
             message.setData(bundle);
-            message.sendToTarget();
+            if (message.getTarget() != null)
+                message.sendToTarget();
         } else {
             Message message = Message.obtain(handler, R.id.decode_failed);
-            message.sendToTarget();
+            if (message.getTarget() != null)
+                message.sendToTarget();
         }
     }
 
