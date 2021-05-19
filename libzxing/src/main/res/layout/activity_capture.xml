@@ -4,19 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <SurfaceView
-        android:id="@+id/capture_preview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="true"
-        android:fitsSystemWindows="true" />
-
     <RelativeLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentTop="true"
         android:layout_gravity="top"
-        android:background="#99000000">
+        android:background="#000">
 
         <ImageView
             android:layout_width="50dp"
@@ -35,6 +29,12 @@
             android:textSize="18sp" />
 
     </RelativeLayout>
+
+    <SurfaceView
+        android:id="@+id/capture_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_title" />
 
     <RelativeLayout
         android:id="@+id/capture_crop_layout"

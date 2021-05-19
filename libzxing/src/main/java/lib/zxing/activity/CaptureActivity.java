@@ -3,7 +3,9 @@ package lib.zxing.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,6 +13,8 @@ import android.os.Message;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
@@ -78,6 +82,7 @@ public class CaptureActivity extends Activity {
         //界面控件初始化
         initDecode();
         mContainer = findViewById(R.id.capture_containter);
+        RelativeLayout rlTitle = findViewById(R.id.rl_title);
         mCropLayout = findViewById(R.id.capture_crop_layout);
         //扫描动画初始化
         initScanerAnimation();
@@ -85,6 +90,14 @@ public class CaptureActivity extends Activity {
         CameraManager.init(this);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
+
+        int titleColor = getIntent().getIntExtra("statusBarColor", 0);
+        if (titleColor != 0) {
+            rlTitle.setBackgroundColor(titleColor);
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(titleColor);
+        }
     }
 
     private void initDecode() {
