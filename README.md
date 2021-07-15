@@ -5,7 +5,7 @@
 
 ```
 dependencies{
-       implementation 'com.github.wenchaosong:ZxingCode:1.0.0'
+       implementation 'com.github.wenchaosong:ZxingCode:1.1.0'
 }
 ```
 
