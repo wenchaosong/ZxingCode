@@ -31,7 +31,12 @@ public class ScanUtil {
                     public void accept(Boolean granted) throws Exception {
                         if (granted) {
                             Intent intent = new Intent(activity, CaptureActivity.class);
-                            intent.putExtra("statusBarColor", 0xffffff00);
+                            intent.putExtra("statusBarColor", 0xffffffff);
+                            intent.putExtra("dark", true);
+                            intent.putExtra("arrowRes", R.mipmap.icon_arrow_left_black);
+                            intent.putExtra("cropRes", R.mipmap.image_crop);
+                            intent.putExtra("titleTextColor", 0xff000000);
+                            intent.putExtra("desText", "下面扫描的描述");
                             activity.startActivityForResult(intent, code);
                         } else {
                             Toast.makeText(activity, "请设置权限", Toast.LENGTH_SHORT).show();
