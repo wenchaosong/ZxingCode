@@ -12,6 +12,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
     implementation 'com.google.zxing:core:3.4.1'
 }

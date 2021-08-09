@@ -6,6 +6,7 @@
 ```
 dependencies{
        implementation 'com.github.wenchaosong:ZxingCode:1.1.1'
+       implementation 'com.github.wenchaosong:ZxingCode:1.2.0' // androidx
 }
 ```
 

@@ -19,17 +19,17 @@ android {
         }
     }
 
-    packagingOptions {
-        exclude 'META-INF/proguard/androidx-annotations.pro'
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
-
-    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
     implementation project(path: ':libzxing')
-    implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
 
 }
