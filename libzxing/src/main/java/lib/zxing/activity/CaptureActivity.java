@@ -2,15 +2,22 @@ package lib.zxing.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.graphics.PointF;
+import android.hardware.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,6 +30,7 @@ import lib.zxing.view.QRCodeReaderView;
 public class CaptureActivity extends Activity implements QRCodeReaderView.OnQRCodeReadListener {
 
     private QRCodeReaderView qrCodeReaderView;
+    private boolean status = false;//记录手电筒状态
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,7 @@ public class CaptureActivity extends Activity implements QRCodeReaderView.OnQRCo
         ImageView arrow = findViewById(R.id.iv_arrow);
         TextView title = findViewById(R.id.tv_title);
         TextView des = findViewById(R.id.tv_des);
+        LinearLayout sdt = findViewById(R.id.ll_sdt);
 
         int barColor = getIntent().getIntExtra("statusBarColor", 0);
         int arrowRes = getIntent().getIntExtra("arrowRes", 0);
@@ -76,6 +85,35 @@ public class CaptureActivity extends Activity implements QRCodeReaderView.OnQRCo
             qrCodeReaderView.setBackCamera();
             qrCodeReaderView.startCamera();
         }
+
+        sdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (status) { //如果已经是打开状态，不需要打开
+                    close();
+                } else {
+                    open();
+                }
+            }
+        });
+    }
+
+    //打开手电筒
+    private void open() {
+        if (status) { //如果已经是打开状态，不需要打开
+            return;
+        }
+        qrCodeReaderView.setTorchEnabled(true);
+        status = true;//记录手电筒状态为打开
+    }
+
+    //关闭手电筒
+    private void close() {
+        if (!status) { //如果已经是关闭状态，不需要打开
+            return;
+        }
+        qrCodeReaderView.setTorchEnabled(false);
+        status = false;//记录手电筒状态为关闭
     }
 
     @Override

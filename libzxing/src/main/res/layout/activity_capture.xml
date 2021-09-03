@@ -37,20 +37,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/rl_title"
-        android:alpha="0.9"
+        android:alpha="0.8"
         android:background="#000000" />
 
     <lib.zxing.view.QRCodeReaderView
         android:id="@+id/capture_preview"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:layout_centerInParent="true" />
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp" />
 
     <RelativeLayout
         android:id="@+id/capture_crop_layout"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:layout_centerInParent="true"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
         android:background="@mipmap/capture" />
 
     <TextView
@@ -63,5 +65,30 @@
         android:text="将二维码图片对准扫描框即可自动扫描"
         android:textColor="@android:color/white"
         android:textSize="13sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_sdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_des"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@mipmap/icon_sdt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="打开手电筒"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
