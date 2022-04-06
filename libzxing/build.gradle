@@ -17,22 +17,15 @@ android {
 afterEvaluate {
     publishing {
         publications {
+            // Creates a Maven publication called "release".
             release(MavenPublication) {
+                from components.release
                 groupId = 'com.github.wenchaosong'
                 artifactId = 'ZxingCode'
-                version = '1.3.4'
-                afterEvaluate {
-                    artifact(tasks.getByName("bundleReleaseAar"))
-                }
-                artifact generateSourcesJar
+                version = '1.3.5'
             }
         }
     }
-}
-
-task generateSourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier 'sources'
 }
 
 dependencies {
