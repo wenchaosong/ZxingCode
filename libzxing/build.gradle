@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+group = 'com.github.wenchaosong'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -7,6 +11,18 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.github.wenchaosong'
+                artifactId = 'ZxingCode'
+                version = '1.3.3'
+            }
+        }
     }
 }
 
