@@ -1,8 +1,11 @@
 package com.test;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
@@ -21,18 +24,38 @@ public class MainActivity extends FragmentActivity {
         mResult = findViewById(R.id.tv_result);
     }
 
+    public void generate(View v) {
+        EditText editText = findViewById(R.id.et);
+        ImageView imageView = findViewById(R.id.iv);
+        String content = editText.getText().toString().trim();
+        Bitmap qrCode = CodeUtils.createQRCode(content, 300);
+        imageView.setImageBitmap(qrCode);
+    }
+
     public void scan(View v) {
         ScanUtil.scan(MainActivity.this, 123);
+    }
+
+    public void pic(View v) {
+        ScanUtil.scan(MainActivity.this, 456);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 123 && resultCode == RESULT_OK) {
-            if (data != null) {
-                //返回的文本内容
-                String result = data.getStringExtra(CodeUtils.RESULT_STRING);
-                mResult.setText(result);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 123) {
+                if (data != null) {
+                    //返回的文本内容
+                    String result = data.getStringExtra(CodeUtils.RESULT_STRING);
+                    mResult.setText(result);
+                }
+            } else {
+                if (data != null) {
+                    //返回的文本内容
+                    String result = data.getStringExtra(CodeUtils.RESULT_STRING);
+                    mResult.setText(result);
+                }
             }
         }
     }

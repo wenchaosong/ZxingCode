@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/capture_containter"
+    android:id="@+id/capture_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -17,7 +17,6 @@
             android:id="@+id/iv_arrow"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true"
             android:onClick="back"
             android:padding="13dp"
             android:src="@mipmap/left_arrow" />
@@ -31,29 +30,31 @@
             android:textColor="#ffffffff"
             android:textSize="18sp" />
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:onClick="pic"
+            android:padding="13dp"
+            android:src="@mipmap/icon_pic" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/rl_title"
-        android:alpha="0.8"
-        android:background="#000000" />
+    </RelativeLayout>
 
     <lib.zxing.view.QRCodeReaderView
         android:id="@+id/capture_preview"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_title" />
 
-    <RelativeLayout
+    <ImageView
         android:id="@+id/capture_crop_layout"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
-        android:background="@mipmap/capture" />
+        android:background="@mipmap/capture"
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/tv_des"
@@ -72,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_des"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -82,6 +83,7 @@
             android:src="@mipmap/icon_sdt" />
 
         <TextView
+            android:id="@+id/tv_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
