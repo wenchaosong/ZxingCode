@@ -49,14 +49,20 @@ public class MainActivity extends FragmentActivity {
                     //返回的文本内容
                     String result = data.getStringExtra(CodeUtils.RESULT_STRING);
                     mResult.setText(result);
+                } else {
+                    mResult.setText("二维码错误");
                 }
             } else {
                 if (data != null) {
                     //返回的文本内容
                     String result = data.getStringExtra(CodeUtils.RESULT_STRING);
                     mResult.setText(result);
+                } else {
+                    mResult.setText("二维码错误");
                 }
             }
+        } else {
+            mResult.setText("二维码错误");
         }
     }
 }
